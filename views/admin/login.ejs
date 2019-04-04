@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <title>Sign in &laquo; Admin</title>
+  <link rel="stylesheet" href="../assets/vendors/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+
+<body>
+  <div class="login">
+    <form class="login-wrap">
+      <img class="avatar" src="../assets/img/default.png">
+      <!-- 有错误信息时展示 -->
+      <div class="alert alert-danger" style='display:none'>
+        <strong>错误！</strong> 用户名或密码错误！
+      </div>
+      <div class="form-group">
+        <label for="email" class="sr-only">邮箱</label>
+        <input id="email" type="email" name='email' class="form-control" value="admin@zce.me" autofocus>
+      </div>
+      <div class="form-group">
+        <label for="password" class="sr-only">密码</label>
+        <input id="password" type="password" name='pass' class="form-control" value="wanglei">
+      </div>
+      <input type="button" class="btn btn-primary btn-block" value="登 陆">
+      <!-- 注意这里不能在添加herf属性，原本是a标签的，不然不能触发ajax提交事件 -->
+    </form>
+  </div>
+  <script src="/assets/vendors/jquery/jquery.min.js"></script>
+  <!-- <script src="/assets/vendors/jquery/jquery.js"></script> -->
+  <script src="/assets/js/admin_login.js"></script>
+</body>
+
+</html>

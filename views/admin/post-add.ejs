@@ -1,0 +1,80 @@
+<%- include('./layouts/admin_header.ejs')%>
+<!-- 引入ckeditor要在js前面，要注意位置 -->
+<script src="/assets/vendors/ckeditor/ckeditor.js"></script>
+<div class="main">
+  <%- include('./layouts/admin_navbar.ejs')%>
+  <div class="container-fluid">
+    <div class="page-title">
+      <h1>写文章</h1>
+    </div>
+    <!-- 有错误信息时展示 -->
+
+
+
+    <div class="alert alert-danger" style="display:none">
+      <strong>错误！</strong>发生XXX错误
+    </div>
+    <form class="row">
+      <div class="col-md-9">
+        <div class="form-group">
+          <label for="title">标题title</label>
+          <input id="title" class="form-control input-lg" name="title" type="text" placeholder="文章标题">
+        </div>
+        <div class="form-group">
+          <label for="content">标题content</label>
+          <textarea id="content" class="form-control input-lg" name="content" cols="30" rows="10" placeholder="内容"></textarea>
+          <script>
+            //同步内容
+            CKEDITOR.replace('content');
+          </script>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="slug">别名</label>
+          <input id="slug" class="form-control" name="slug" type="text" placeholder="别名slug">
+          <p class="help-block">https://zce.me/post/<strong>slug</strong></p>
+        </div>
+        <div class="form-group">
+          <!-- 这里设置隐藏域来保存图片的文件路径 -->
+
+          <label for="feature">特色图像</label>
+          <!-- show when image chose -->
+          <img class="help-block thumbnail" style="display: none">
+          <!-- 点击上传图片事件。这里的name没有使用上name属性，后面要用来保存文件名 -->
+          <input type="hidden" name="feature" value="">
+          <input id="feature" class="form-control" type="file">
+        </div>
+        <div class="form-group">
+          <label for="category">所属分类category_id</label>
+          <select id="category" class="form-control" name="category_id">
+            <!-- <option value="1">未分类</option>
+            <option value="2">潮生活</option> 这里使用渲染 -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="created">发布时间created</label>
+          <input id="created" class="form-control" name="created" type="datetime-local">
+        </div>
+        <div class="form-group">
+          <label for="status">状态status</label>
+          <select id="status" class="form-control" name="status">
+            <option value="drafted">草稿</option>
+            <option value="published">已发布</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input class="btn btn-primary cate-save" type="button" value="保存">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!-- 引入写入文章得到js -->
+<script src="/assets/js/adminPostAdd.js"></script>
+
+<%- include('./layouts/admin_aside.ejs')%>
+
+<%- include('./layouts/admin_footer.ejs')%>
